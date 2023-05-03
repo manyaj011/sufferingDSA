@@ -27,10 +27,10 @@ int countdis(vector<int> v, int k)
  }
 }
 
-int optapp(vector<int> v, int k)
+void optapp(vector<int> v, int k)
 {
  int n = v.size();
- unordered_map<int, int> freq;
+ unordered_map<int, int> freq;//by default all values zero
  int c = 0, i = 0;
  // traverse the first window and store the count of every element in hash map
  for (i = 0; i < k; i++)
@@ -68,6 +68,6 @@ int main()
 {
  vector<int> v = {10, 20, 20, 10, 30, 40, 10};
  // cout << countdis(v, 4);
- cout << optapp(v, 4);
+ optapp(v, 4);
  return 0;
 }
