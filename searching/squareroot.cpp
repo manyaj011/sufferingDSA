@@ -19,10 +19,27 @@ int sqrroot(int value)
  }
  return ans;
 }
+double moreprecise(int n , int precision , int tempsol){
+ double factor = 1;
+ double ans = tempsol;
+ for (int i = 0; i < precision; i++)
+ {
+  /* code */
+  factor = factor/10;
+  for (double j = ans; j*j < n; j+=factor)
+  {
+   /* code */
+   ans = j;
+  }
+  
+ }
+ return ans;
+}
 int main()
 {
 int val;
 cin>>val;
-cout<<sqrroot(val);
+int tempsol = sqrroot(val);
+cout<<moreprecise(val , 3 , tempsol);
 return 0;
 }

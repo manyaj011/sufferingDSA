@@ -26,7 +26,7 @@ int getsumopt(int arr[], int n, int start, int end)
     // psum[0]=arr[0];
     // for(int i=1;i<n;i++)
     // {
-    //     psum[i]=psum[i-1];arr[i];
+    //     psum[i]=psum[i-1] + arr[i];
     // }
     if(start==0)
         return psum[end];

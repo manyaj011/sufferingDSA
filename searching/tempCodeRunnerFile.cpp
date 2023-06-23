@@ -1,115 +1,76 @@
 #include <bits/stdc++.h>
 using namespace std;
-// this is the recurssive method
-int firstoccur(vector<int> v, int low, int high, int target)
+int firstoccur(vector<int> &arr, int n, int k)
 {
- int n = v.size();
-
- if (low > high)
-  return -1;
-
- int mid = (low + high) / 2;
- if (target > v[mid])
+ int l = 0;
+ int h = n - 1;
+ int first = -1; // intitaise with -1
+ while (l <= h)
  {
-  return firstoccur(v, mid + 1, high, target);
- }
- else if (target < v[mid])
- {
-  return firstoccur(v, low, mid - 1, target);
- }
- else
- {
-  // if mid is zero it means low=high=0 means it is the first element
-  if (mid == 0 || v[mid] != v[mid - 1])
+  int mid = (l + h) / 2;
+  if (arr[mid] == k)
   {
-   return mid;
+   // if(mid == 0 || arr[mid] != arr[mid-1])
+   first = mid;
+   h = mid - 1; // this is the optimal way
+   // else
+   //     h = mid -1;
   }
+  else if (arr[mid] > k)
+   h = mid - 1;
   else
-   // if mid = mid - 1 then we again run the loop beacuse mid se pehle koi index h jhaan element present h
-   return firstoccur(v, low, mid - 1, target);
+   l = mid + 1;
  }
+ return first;
 }
-
-// iterative way
-int firstoccur_iter(vector<int> v, int target)
+int lastoccur(vector<int> &arr, int n, int k)
 {
- int n = v.size();
- int low = 0;
- int high = n - 1;
- while (low <= high)
+ int last = -1;
+ int l = 0;
+ int h = n - 1;
+ while (l <= h)
  {
-  int mid = (low + high) / 2;
-  if (target > v[mid])
+  int mid = (l + h) / 2;
+  if (arr[mid] == k)
   {
-   low = mid + 1;
+   // if(arr[mid] != arr[mid+1] || mid == n-1)
+   last = mid;
+   l = mid + 1;
+   // else
+   //     l = mid + 1;
   }
-  else if (target < v[mid])
+  else if (arr[mid] < k)
   {
-   high = mid - 1;
+   l = mid + 1;
   }
   else
   {
-   if (mid == 0 || v[mid - 1] != v[mid])
-   {
-    return mid;
-   }
-   else
-   {
-    high = mid - 1;
-   }
+   h = mid - 1;
   }
  }
+ return last;
 }
-// last occurence of the number by recurssive way
-
-int last_occur(vector<int> v, int low, int high, int target)
+pair<int, int> firstAndLastPosition(vector<int> &arr, int n, int k)
 {
-
- int n = v.size();
- if (low > high)
-  return -1;
-
- int mid = (low + high) / 2;
- if (target > v[mid])
- {
-  return last_occur(v, mid + 1, high, target);
- }
- else if (target < v[mid])
- {
-  return last_occur(v, low, mid - 1, target);
- }
- else
- {
-  if (mid == n - 1 || v[mid] != v[mid + 1])
-   return mid;
-  else
-   return last_occur(v, mid + 1, high, target);
- }
-}
-int count_occur(vector<int>v,int target)
-{
- int first=firstoccur_iter(v,target);
- if(first==-1) return 0;
- else
-  return (last_occur(v,0,v.size()-1,target)-first + 1);
+ // Write your code here
+ pair<int, int> p;
+ p.first = firstoccur(arr, n, k);
+ p.second = lastoccur(arr, n, k);
+ return p;
 }
 int main()
 {
- int n;
- cin >> n;
- vector<int> v(n);
- for (int i = 0; i < n; i++)
- {
-  cin >> v[i];
- }
- cout << "enter the target element:";
- int target;
- cin >> target;
- // int f_index=firstoccur(v, 0, n - 1, target);
- // cout<<"the first occurence is at "<<f_index;
- int f_index_iter = firstoccur_iter(v, target);
- cout << "the first occurence is at " << f_index_iter << endl;
- cout << "the last occurence is at " << last_occur(v, 0, n - 1, target) << endl;
- cout << "the total occurences are "<<count_occur(v,target);
- return 0;
+
+ vector<int> arr = {
+     0,
+     0,
+     1,
+     1,
+     2,
+     2,
+     2,
+     2,
+ };
+ pair<int, int> k = firstAndLastPosition(arr, 8, 2);
+ cout << k.first << " " << k.second;
 }

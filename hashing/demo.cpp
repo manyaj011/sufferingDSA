@@ -3,17 +3,34 @@ using namespace std;
 
 int main()
 {
-  string s;
-  cin >> s;
-  int size = s.length();
-  char l = s[size - 1];
-  char sl = s[size - 2];
-  // ab
-  string num;
-  num.push_back(sl);
-  num.push_back(l);
-  int numb = stoi(num);
-  cout << numb % 20 << endl;
-
- return 0;
+  // your code goes here
+  
+    int n, b;
+    cin >> n >> b;
+    int a[n];
+    for (int i = 0; i < n; i++)
+    {
+      cin >> a[i];
+    }
+    unordered_set<int> s;
+    for (int i = 0; i < n; i++)
+    {
+      s.insert(a[i]);
+    }
+    int c = 0;
+    for (int i = 0; i < n; i++)
+    {
+      int z = ~(b ^ a[i]);
+      cout<<z;
+      if (s.find(z) != s.end())
+      {
+        c++;
+        break;
+      }
+    }
+    if (c > 0)
+      cout << "yes" << endl;
+    else
+      cout << "no" << endl;
+  return 0;
 }
