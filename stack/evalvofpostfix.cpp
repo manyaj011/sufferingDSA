@@ -4,7 +4,7 @@
 //  stack<int>st;
 //  int res = 0;
 //  for(int i = 0;i<s.length() ;i ++){
-//   if(isdigit(s[i]) == 1){ //isdigit funtions returns the ascii value so to return the actual numerical value subtract it with the ascii value of 0 
+//   if(isdigit(s[i]) == 1){ //isdigit funtions returns the ascii value so to return the actual numerical value subtract it with the ascii value of 0
 //    st.push(s[i] - '0');
 //   }
 //   else{
@@ -12,7 +12,7 @@
 //    st.pop();
 //    int val2 = st.top();
 //    st.pop();
-   
+
 //    // int x1 = st.pop() - '0';
 //    // int x2 = st.pop() - '0';
 //    switch(s[i]){
@@ -94,8 +94,7 @@ int evaluation(string s)
 
 int main()
 {
- int n;
- cin >> n;
+
  string s;
  cin >> s;
  cout << evaluation(s);
