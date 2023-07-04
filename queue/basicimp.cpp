@@ -85,7 +85,7 @@ class  mqueue{
   }
   int getrear(){
     if(isempty()) return -1;
-    return (front+ size -1) ;  //rear can be calcukated without intitializing rear as this can be calculated by the formula mentioned 
+    return (front+ size -1) ;  //rear can be calculated without intitializing rear as this can be calculated by the formula mentioned 
   }
 };
 int main()
