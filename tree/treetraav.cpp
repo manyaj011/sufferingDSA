@@ -28,7 +28,7 @@ void printspiral(node *root)
   {
    node *curr = q.front();
    q.pop();
-   if (reverse)
+   if (reverse) // reverse true hone p reversed print hoga
    {
     s.push(curr->key);
    }
@@ -45,7 +45,7 @@ void printspiral(node *root)
   {
    while (s.empty() == false)
    {
-    cout << s.top()<<" ";
+    cout << s.top() << " ";
     s.pop();
    }
   }
@@ -54,16 +54,62 @@ void printspiral(node *root)
  }
 }
 
-//this is method 2 with btter TC
-void spiralform(node *root){
- stack<int>s1;
- stack<int>s2;
- s1.push(root->key);
- while(s1.empty() == false){
-  s1.
- }
- while(s2.empty() == false){
+// this is method 2 with btter TC
+void spiralform(node *root)
+{
+ stack<node *> s1;
+ stack<node *> s2;
+ s1.push(root);
+ while (!s1.empty() || !s2.empty())
+ {
+  while (s1.empty() == false)
+  {
+   // node *curr = s1.top();
+   // cout << curr->key<<" ";
+   // s1.pop();
+   // if (curr->left != NULL)
+   //  s2.push(curr->left);
+   // if (curr->right != NULL)
+   //  s2.push(curr->right);
 
+   // this is the line by line display of nodes in tree spiral form;
+   int s = s1.size();
+   for (int i = 0; i < s; i++)
+   {
+    node *curr = s1.top();
+    cout << curr->key << " ";
+    s1.pop();
+    if (curr->left != NULL)
+     s2.push(curr->left);
+    if (curr->right != NULL)
+     s2.push(curr->right);
+   }
+   cout << endl;
+  }
+
+  while (s2.empty() == false)
+  {
+   // node *curr = s2.top();
+   // cout << curr->key<<" ";
+   // s2.pop();
+   // if (curr->right != NULL)
+   //  s1.push(curr->right);
+   // if (curr->left != NULL)
+   //  s1.push(curr->left);
+
+   int s = s2.size();
+   for (int i = 0; i < s; i++)
+   {
+    node *curr = s2.top();
+    cout << curr->key << " ";
+    s2.pop();
+    if (curr->right != NULL)
+     s1.push(curr->right);
+    if (curr->left != NULL)
+     s1.push(curr->left);
+   }
+   cout << endl;
+  }
  }
 }
 
@@ -77,9 +123,9 @@ int main()
  root->right->left = new node(6);
  root->right->right = new node(7);
  root->left->left->left = new node(8);
- root->left->left->right = new node(8);
+ root->left->left->right = new node(9);
  root->right->left->left = new node(10);
  root->right->left->right = new node(11);
 
- printspiral(root);
+ spiralform(root);
 }
