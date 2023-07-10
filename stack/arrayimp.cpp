@@ -33,7 +33,7 @@ class mystack{
 
   int gettop(){
    if(top == -1) {
-    cout<<"there is nthing to top out as the arrauu is empty"<<endl;
+    cout<<"there is nthing to top out as the array is empty"<<endl;
     return -1;
    }
    return arr[top];

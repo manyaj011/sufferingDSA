@@ -30,16 +30,19 @@ int maxi1(node *root)
  int res = INT_MIN;
  while (!q.empty())
  {
-  node *curr = q.front();
-  q.pop();
-  res = max(curr->key, res);
+  node *curr = q.front(); //constant work
+  q.pop(); //constant work
+  res = max(curr->key, res); //this is constant work for every node
   if (curr->left != NULL)
-   q.push(curr->left);
+   q.push(curr->left); //push operations are also constant work
   if (curr->right != NULL)
    q.push(curr->right);
  }
  return res;
 }
+
+//tc is o(n)
+//as o(w)
 int main()
 {
  node *root = new node(10);
