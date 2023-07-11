@@ -14,21 +14,47 @@ public:
  }
 };
 
-void iterpreorder(node *root){
- if(root == NULL) return;
- stack<node*>st;
+void iterpreorder(node *root)
+{
+ if (root == NULL)
+  return;
+ stack<node *> st;
  st.push(root);
- while(st.empty() == false){
+ while (st.empty() == false)
+ {
   node *curr = st.top();
-  cout<<st.top() <<" ";
-  if(curr->right!=NULL)
-   st.push(curr->right);
+  cout << curr->key << " ";
+  st.pop(); // pop krna imp h na because tbhi to aage ki values access hongi
+  if (curr->right != NULL)
+   st.push(curr->right); // right pehle daala because usko baadme access krna h stack uses lifo
+
   if (curr->left != NULL)
    st.push(curr->left);
  }
 }
- 
 
+// eff way
+void effway(node *root)
+{
+ if(root == NULL) return; //initial con to check if the tree is empty
+ stack<node *> st;
+ node *curr = root;
+ while (st.empty() == false || curr != NULL)
+ {
+  while (curr != NULL)
+  {
+   cout << curr->key << " ";
+   if (curr->right != NULL)
+    st.push(curr->right);
+   curr = curr->left;
+  }
+  if(st.empty() == false)
+  {
+   curr = st.top();
+   st.pop();
+  }
+ }
+}
 
 int main()
 {
@@ -44,5 +70,6 @@ int main()
  root->right->left->left = new node(10);
  root->right->left->right = new node(11);
 
- iterpreorder(root);
+ iterpreorder(root);cout<<endl;
+ effway(root);
 }
