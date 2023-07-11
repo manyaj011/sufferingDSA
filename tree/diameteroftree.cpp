@@ -27,6 +27,28 @@ int diameter(node *root)
  return max(d1 , max(d2,d3));
 }
 
+//using map;
+unordered_map<node*,int>m;
+
+
+
+
+
+int height1 (node *root){ 
+ if(root == NULL) return 0;
+ int h = 1 + max(height(root->left) , height(root->right));
+ m[root] = h;
+}
+int res = 0;
+int best(node*root){
+ if(root == NULL) return 0;
+ int lh = height(root->left);
+ int rh = height(root->right);
+ res = max(res, 1 + lh + rh);
+ return res;
+}
+
+
 int main()
 {
  node *root = new node(1);
@@ -41,5 +63,5 @@ int main()
  root->right->left->left = new node(10);
  root->right->left->right = new node(11);
 
- cout<<diameter(root);
+ cout<<best(root);
 }

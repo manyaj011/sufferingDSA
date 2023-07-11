@@ -46,7 +46,7 @@ vector<int> nextgrt(vector<int> v)
  return res;
 }
 //tc: o(n)
-//sc: o(1)
+//sc: o(n)
 int main()
 {
  int n;
