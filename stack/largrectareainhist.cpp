@@ -46,7 +46,7 @@ vector<int> psm(vector<int> v)
   {
    s.pop();
   }
-  int span = s.empty() ? -1 : i - s.top();
+  int span = s.empty() ? -1 : s.top();
   res.push_back(span);
   s.push(i);
  }

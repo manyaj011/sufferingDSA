@@ -35,7 +35,7 @@ void levelorder1(node *root, int k)
 // appraoch by using queue
 void levelorder2(node *root)
 {
- queue<node *> q; // why *
+ queue<node *> q; // why * beacuse qw r pushing root
  q.push(root);
  while (!q.empty())
  {

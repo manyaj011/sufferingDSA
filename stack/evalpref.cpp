@@ -7,7 +7,7 @@ int evaluation(string s)
  int res = 0;
  for (int i = s.length() - 1; i >= 0; i--)
  {
-  if (isdigit(s[i]) == 1)
+  if (isdigit(s[i]))
   { // isdigit function returns the ASCII value of the character so to return the numerical value subtract the ASCII value of 0
    st.push(s[i] - '0');
   }
