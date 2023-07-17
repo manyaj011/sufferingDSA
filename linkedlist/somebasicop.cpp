@@ -103,6 +103,20 @@ node* deleteelement(node*head , int x){
   curr->next = curr->next->next;
   return head;
 }
+
+node* delpos(node*head , int x ,int pos){
+  if(head == NULL) return NULL;
+  node* curr = head;
+  node* prev = NULL;
+  for(int i = 1;i <= pos-1; i++){
+    prev = curr;
+    curr = curr->next;
+  }
+  prev->next = curr->next;
+  delete curr;
+  return head;
+
+}
 // this is the iterative solution
 int search(node *head, int x)
 {
