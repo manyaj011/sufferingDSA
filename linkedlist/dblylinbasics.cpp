@@ -56,7 +56,7 @@ node *reverse(node *head)
  node *prev = NULL;
  while (curr != NULL)
  {
-  prev = curr;
+  prev = curr; //this mainains the updated head
   node *temp = curr->next;
   curr->next = curr->prev;
   curr->prev = temp;
