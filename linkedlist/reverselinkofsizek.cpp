@@ -46,6 +46,29 @@ node *sorted(node *head, int x)
  return head;
 }
 // tc o(pos) //pos is where ele is to be inserted
+
+node *reversebysizek(node *head, int k)
+{
+ node *curr = head;
+ node *prev = NULL;
+ node *next = NULL;
+ int count = 0;
+ while (curr != NULL && count < k)
+ {
+  /* code */
+  next = curr->next;
+  curr->next = prev;
+  prev = curr;
+  curr = next;
+  count++;
+ } // yehmne first k elements ke liye kia h
+ if (next != NULL)
+ {
+  node *rest_head = reversebysizek(next, k);
+  head->next = rest_head;
+ }
+ return prev;
+}
 void print(node *head)
 {
  node *curr = head;
@@ -64,5 +87,6 @@ int main()
  head = sorted(head, 25);
  head = sorted(head, 5);
  head = sorted(head, 45);
+ head = reversebysizek(head, 3);
  print(head);
 }

@@ -104,7 +104,7 @@ node *reccrev1(node *head)
 }
 // tc o(n)
 // as o(n)
-node *reccrev2(node *curr, node *prev) //this is almost same as reccursive iterative 
+node *reccrev2(node *curr, node *prev) // this is almost same as reccursive iterative
 {
  if (curr == NULL)
   return prev;
@@ -116,6 +116,23 @@ node *reccrev2(node *curr, node *prev) //this is almost same as reccursive itera
 
 // tc o(n)
 // as o(n)
+
+node *removedup(node *head)
+{
+ if(head == NULL || head->next == NULL) return head;
+ node *curr = head;
+ while (curr->next != NULL)
+ {
+  if (curr->data == curr->next->data)
+  {
+   node *temp = curr->next;
+   curr->next = curr->next->next;
+   delete temp;
+  }
+  curr = curr->next;
+ }
+ return head;
+}
 int main()
 {
  node *head = NULL;
@@ -125,8 +142,12 @@ int main()
  head = sorted(head, 25);
  head = sorted(head, 5);
  head = sorted(head, 45);
+ head = sorted(head, 25);
+ head = sorted(head, 20);
+
  head = reverse(head);
  head = reviter(head);
- head = reccrev2(head, NULL);
+ // head = reccrev2(head, NULL);
+ head = removedup(head);
  print(head);
 }

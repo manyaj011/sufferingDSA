@@ -64,5 +64,6 @@ int main()
  head = sorted(head, 25);
  head = sorted(head, 5);
  head = sorted(head, 45);
+ head->next->next->next->next = head->next;
  print(head);
 }
