@@ -54,6 +54,58 @@ int intersection(node *head1, node *head2)
  ;
 }
 
+int intersec(node *head1, node *head2)
+{
+
+ if (head1 == NULL || head2 == NULL)
+  return -1;
+ node *curr1 = head1;
+ node *curr2 = head2;
+ int count1 = 0, count2 = 0;
+
+ while (curr1 != NULL)
+ {
+  count1++;
+  curr1 = curr1->next;
+ }
+ while (curr2 != NULL)
+ {
+  count2++;
+  curr2 = curr2->next;
+ }
+
+ int x = count1 - count2;
+ curr1 = head1;
+ curr2 = head2;
+ if (x == 0)
+  return head1->data;
+ else if (x > 0)
+ {
+  while (x > 0)
+  {
+   curr1 = curr1->next;
+   x--;
+  }
+ }
+ else
+ {
+  while (x > 0)
+  {
+   curr2 = curr2->next;
+   x--;
+  }
+ }
+ while (curr1 != NULL && curr1 != NULL)
+ {
+  if (curr1 == curr2)
+  {
+   return curr1->data;
+  }
+  curr1 = curr1->next;
+  curr2 = curr2->next;
+ }
+ return -1;
+}
 void print(node *head)
 {
  if (head == NULL)
