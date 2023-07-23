@@ -39,7 +39,7 @@ Node *clonelinkedlist(Node *head)
   curr = next;
  }
  for (Node *curr = head; curr != NULL; curr = curr->next->next)
- { // now we have to set the random pointers . here we don't have to check that if curr->next is NULL or not because linked list even hi rhegi id curr exist to curr->next will als exist
+ { // now we have to set the random pointers . here we don't have to check that if curr->next is NULL or not because linked list even hi rhegi if curr exist to curr->next will als exist
   curr->next->random = curr->random->next;
  }
 
